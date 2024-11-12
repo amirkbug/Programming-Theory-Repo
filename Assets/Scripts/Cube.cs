@@ -1,36 +1,77 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    private Vector3 cameraPosition = new Vector3(0, 1, -10);
-    private int health = 10;
-    public TextMeshProUGUI cubeHealthBar;
-
-
-    protected void Move(float speed)
+    private float speedIntial = 1;
+    public float speed
     {
-        transform.Translate((cameraPosition - gameObject.transform.position).normalized * speed * Time.deltaTime);
+        get { return speedIntial; }
+        set
+        {
+            if (value <= 0)
+            {
+
+                Debug.LogError("you cant set zero or negative numbers for speed");
+
+            }
+            else
+            {
+                speedIntial = value;
+            }
+        }
+    }
+
+    private int healthIntial = 10;
+    public int health
+    {
+        get { return healthIntial; }
+        set
+        {
+            if (value < 0)
+            {
+
+                Debug.LogError("you cant set zero or negative numbers for health");
+            }
+            else
+            {
+                healthIntial = value;
+            }
+        }
+
+    }
+    [SerializeField]
+    private TextMeshProUGUI healthBar;
+
+
+    public virtual void Move()
+    {
+        transform.Translate(Vector3.back * speedIntial * Time.deltaTime);
     }
 
 
-    protected virtual void OnMouseDown()
+
+    public virtual void HealthBar()
     {
-        health -= 1;
-        cubeHealthBar.text = health.ToString();
+        healthIntial -= 1;
+        healthBar.text = health.ToString();
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
+    private void OnMouseDown()
+    {
+        HealthBar();
+    }
 
     private void Update()
     {
-        Move(0.5f);
-        OnMouseDown();
-        
+        Move();
     }
-
-    
-
-
 }

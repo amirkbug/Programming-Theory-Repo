@@ -1,25 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class Sphere : Cube
 {
-    private int sphereHealth = 20;
-    public TextMeshProUGUI sphereHealthBar;
-
-
-    protected override void OnMouseDown()
+    private void Start()
     {
-        sphereHealth -= 5;
+        health = 30;
+        speed = 0.5f;
+    }
+
+    public override void Move()
+    {
+
+        base.Move();
     }
 
 
 
-    // Update is called once per frame
-    void Update()
+    public override void HealthBar()
     {
-        Move(0.2f);
-        OnMouseDown();
+        base.HealthBar();
     }
 }
