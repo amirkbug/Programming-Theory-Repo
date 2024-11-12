@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 
+//INHERITANCE
 public class Cylinder : Cube
 {
 
@@ -12,6 +13,7 @@ public class Cylinder : Cube
         speed = 5;
     }
 
+    // POLYMORPHISM
     public override void HealthBar()
     {
 
@@ -22,6 +24,7 @@ public class Cylinder : Cube
     }
 
 
+    // POLYMORPHISM
     public override void Move()
     {
         base.Move();

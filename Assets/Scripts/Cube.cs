@@ -4,9 +4,12 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 
+
 public class Cube : MonoBehaviour
 {
     private float speedIntial = 1;
+
+    // ENCAPSULATION
     public float speed
     {
         get { return speedIntial; }
@@ -26,6 +29,8 @@ public class Cube : MonoBehaviour
     }
 
     private int healthIntial = 10;
+
+    // ENCAPSULATION
     public int health
     {
         get { return healthIntial; }
@@ -43,10 +48,13 @@ public class Cube : MonoBehaviour
         }
 
     }
+    // ENCAPSULATION
     [SerializeField]
     private TextMeshProUGUI healthBar;
 
 
+    // POLYMORPHISM
+    // ABSTRACTION
     public virtual void Move()
     {
         transform.Translate(Vector3.back * speedIntial * Time.deltaTime);
@@ -54,6 +62,8 @@ public class Cube : MonoBehaviour
 
 
 
+    // POLYMORPHISM
+    // ABSTRACTION
     public virtual void HealthBar()
     {
         healthIntial -= 1;
@@ -65,10 +75,13 @@ public class Cube : MonoBehaviour
 
     }
 
+    
     private void OnMouseDown()
     {
         HealthBar();
     }
+
+
 
     private void Update()
     {

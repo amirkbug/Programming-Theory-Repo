@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//INHERITANCE
 public class Sphere : Cube
 {
     private void Start()
@@ -10,6 +11,7 @@ public class Sphere : Cube
         speed = 0.5f;
     }
 
+    // POLYMORPHISM
     public override void Move()
     {
 
@@ -17,7 +19,7 @@ public class Sphere : Cube
     }
 
 
-
+    // POLYMORPHISM
     public override void HealthBar()
     {
         base.HealthBar();
